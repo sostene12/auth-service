@@ -35,7 +35,7 @@ public class JwtUtil {
 
     // For backward compatibility - delegates to the new method
     public String generateToken(String email, String role, String userId) {
-        return generateToken(email, role, userId, null, null);
+        return generateToken(email, role, userId, null, null,null);
     }
 
     public Claims validateToken(String token) {
