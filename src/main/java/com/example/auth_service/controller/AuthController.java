@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -135,7 +137,10 @@ public class AuthController {
         // Frontend URL - replace this with your actual frontend URL
         String frontendUrl = "http://localhost:5173/login";
 
+        String encodedToken = URLEncoder.encode(token, StandardCharsets.UTF_8);
+
         // Redirect to the frontend with the token
-        response.sendRedirect(frontendUrl + "?token=" + token);
+        response.sendRedirect(frontendUrl + "?token=" + encodedToken);
+
     }
 }
