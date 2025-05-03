@@ -53,7 +53,18 @@ public class AuthController {
             user.setEmail(email);
             user.setName(name);
             user.setProfilePicture(picture);
-            user.setRole(Role.STAFF); // Default role
+
+            long userCount = userRepository.count();
+
+            if (userCount == 0) {
+                // Make the first user an admin
+                user.setRole(Role.ADMIN);
+                System.out.println("First user created as ADMIN: " + email);
+            } else {
+                // Default role for subsequent users
+                user.setRole(Role.STAFF);
+            }
+
             user.setDepartmentId("1"); // Default department ID as string now
             userRepository.save(user);
         } else {
