@@ -21,7 +21,7 @@ public class SecurityConfig {
                         .loginPage("/")
                         .authorizationEndpoint(authorization -> authorization
                                 .baseUri("/oauth2/authorization"))
-                        .defaultSuccessUrl("/auth/user", true)
+                        .defaultSuccessUrl("/auth/login/success", true)
                 )
                 .csrf().disable(); // Disable CSRF for simplicity
         return http.build();
