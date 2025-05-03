@@ -69,7 +69,15 @@ public class AuthController {
             user = userOpt.get();
         }
 
-        String token = jwtUtil.generateToken(email, user.getRole().name(), user.getId());
+        // Generate token with all necessary user information
+        String token = jwtUtil.generateToken(
+                email,
+                user.getRole().name(),
+                user.getId(),
+                user.getName(),         // Add name
+                user.getDepartmentId()  // Add departmentId
+        );
+
         Map<String, Object> response = new HashMap<>();
         response.put("token", token);
         response.put("userId", user.getId());
@@ -77,6 +85,7 @@ public class AuthController {
         response.put("name", user.getName());
         response.put("profilePicture", user.getProfilePicture());
         response.put("role", user.getRole().name());
+        response.put("departmentId", user.getDepartmentId());
         return response;
     }
 }
