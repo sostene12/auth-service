@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  auth-service:
+    build: .
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      - MONGODB_URI=mongodb+srv://challenge:lPLWxxD3CSWdb8qC@cluster0.tvlir.mongodb.net/leave-management?retryWrites=true&w=majority
+      - MONGODB_DATABASE=leave-management
+      - GOOGLE_CLIENT_ID=973046799216-u7k7ap8fo5u1h8rt9l2cai5ckq583d2o.apps.googleusercontent.com
+      - GOOGLE_CLIENT_SECRET=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

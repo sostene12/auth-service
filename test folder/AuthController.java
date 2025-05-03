@@ -32,9 +32,9 @@ public class AuthController {
     @Autowired
     private JwtUtil jwtUtil;
 
-    @Operation(summary = "Get authenticated user details", description = "Authenticates the user via OAuth2 and returns user details along with a JWT token.")
+    @Operation(summary = "Get authenticated user details",description = "Authenticates the user via OAuth2 and returns user details along with a JWT token.")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Successfully retrieved user details and token",
+            @ApiResponse(responseCode = "200",description = "Successfully retrieved user details and token",
                     content = @Content(mediaType="application/json",
                             schema = @Schema(implementation = User.class))),
             @ApiResponse(responseCode = "401", description = "Unauthorized - User not authenticated",
@@ -54,7 +54,7 @@ public class AuthController {
             user.setName(name);
             user.setProfilePicture(picture);
             user.setRole(Role.STAFF); // Default role
-            user.setDepartmentId("1"); // Default department ID as string now
+            user.setDepartmentId(1L); // Default department
             userRepository.save(user);
         } else {
             user = userOpt.get();
