@@ -18,14 +18,15 @@ public class JwtUtil {
     @Value("${jwt.expiration}")
     private Long expiration;
 
-    public String generateToken(String email, String role, String userId, String name, String departmentId) {
+    public String generateToken(String email, String role, String userId, String name, String departmentId,String profilePicture) {
         return Jwts.builder()
                 .subject(email)
                 .claim("role", role)
                 .claim("userId", userId)
-                .claim("name", name)                  // Add name
-                .claim("email", email)                // Explicitly add email
-                .claim("departmentId", departmentId)  // Add departmentId
+                .claim("name", name)
+                .claim("email", email)
+                .claim("departmentId", departmentId)
+                .claim("profilePicture", profilePicture)
                 .issuedAt(new Date())
                 .expiration(new Date(System.currentTimeMillis() + expiration))
                 .signWith(Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8)))

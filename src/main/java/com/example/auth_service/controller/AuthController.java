@@ -74,8 +74,9 @@ public class AuthController {
                 email,
                 user.getRole().name(),
                 user.getId(),
-                user.getName(),         // Add name
-                user.getDepartmentId()  // Add departmentId
+                user.getName(),
+                user.getDepartmentId(),
+                user.getProfilePicture()
         );
 
         Map<String, Object> response = new HashMap<>();
